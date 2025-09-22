@@ -1,0 +1,301 @@
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+  background-attachment: fixed;
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      2px 2px at 20px 30px,
+      rgba(120, 119, 198, 0.5),
+      transparent
+    ),
+    radial-gradient(2px 2px at 40px 70px, rgba(255, 119, 198, 0.5), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(120, 200, 255, 0.5), transparent),
+    radial-gradient(
+      1px 1px at 130px 80px,
+      rgba(255, 255, 255, 0.3),
+      transparent
+    ),
+    radial-gradient(
+      2px 2px at 160px 30px,
+      rgba(120, 119, 198, 0.5),
+      transparent
+    );
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: particleMove 30s linear infinite;
+  z-index: 1;
+}
+
+@keyframes particleMove {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-200px) translateY(-100px);
+  }
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(120, 119, 198, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 119, 198, 0.3) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 40%,
+      rgba(120, 200, 255, 0.2) 0%,
+      transparent 50%
+    );
+  animation: backgroundMove 20s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes backgroundMove {
+  0% {
+    transform: translateX(-10px) translateY(-10px);
+  }
+  100% {
+    transform: translateX(10px) translateY(10px);
+  }
+}
+
+.welcome-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+}
+
+.welcome-title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #e0e0e0;
+  margin-bottom: 3rem;
+  text-shadow: 0 0 5px rgba(120, 119, 198, 0.3),
+    0 0 10px rgba(120, 119, 198, 0.2), 0 0 15px rgba(120, 119, 198, 0.1);
+  animation: titleEntry 2s ease-out,
+    titleGlow 4s ease-in-out 2s infinite alternate,
+    titlePulse 6s ease-in-out 1s infinite;
+  line-height: 1.1;
+  background: linear-gradient(45deg, #e0e0e0, #9a99d4, #d4a4c4, #a4d4c4);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 10s ease-in-out infinite,
+    titleFloat 8s ease-in-out infinite;
+  transform: perspective(1000px) rotateX(0deg);
+}
+
+@keyframes titleEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes titlePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes titleFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 0 0 10px rgba(120, 119, 198, 0.5),
+      0 0 20px rgba(120, 119, 198, 0.3), 0 0 30px rgba(120, 119, 198, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 20px rgba(120, 119, 198, 0.8),
+      0 0 30px rgba(120, 119, 198, 0.5), 0 0 40px rgba(120, 119, 198, 0.3);
+  }
+}
+
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.chat-button {
+  background: linear-gradient(45deg, #7877c6, #ff77c6);
+  border: none;
+  border-radius: 50px;
+  padding: 1.2rem 3rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 15px rgba(120, 119, 198, 0.4),
+    0 0 20px rgba(120, 119, 198, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: buttonEntry 1s ease-out 1s both,
+    buttonPulse 2s ease-in-out 2s infinite;
+}
+
+.chat-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s;
+}
+
+.chat-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.chat-button:hover::before {
+  left: 100%;
+}
+
+.chat-button:hover::after {
+  width: 400px;
+  height: 300px;
+}
+
+.chat-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(120, 119, 198, 0.6),
+    0 0 40px rgba(120, 119, 198, 0.4), inset 0 0 30px rgba(255, 255, 255, 0.2);
+  background: linear-gradient(45deg, #8a89d6, #ff89d6, #89d6ff);
+  background-size: 300% 300%;
+  animation: buttonGradient 2s ease-in-out infinite;
+}
+
+.chat-button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+@keyframes buttonEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes buttonPulse {
+  0%,
+  100% {
+    box-shadow: 0 4px 15px rgba(120, 119, 198, 0.4),
+      0 0 20px rgba(120, 119, 198, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(120, 119, 198, 0.6),
+      0 0 30px rgba(120, 119, 198, 0.4), inset 0 0 25px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes buttonGradient {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Diseño responsivo */
+@media (max-width: 768px) {
+  .welcome-container {
+    padding: 1rem;
+  }
+
+  .welcome-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .chat-button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-title {
+    font-size: 2rem;
+  }
+
+  .chat-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+}

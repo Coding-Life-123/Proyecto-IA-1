@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat IA - Interfaz</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <body>
+    <div class="chat-container">
+      <div class="chat-header">
+        <button class="back-button" onclick="irAEntrada()">
+          ← Ir a la Entrada
+        </button>
+        <button class="menu-button" onclick="toggleMenu()">
+          👥 Lista de Personas
+        </button>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <button class="dropdown-item" onclick="selectPersona('Persona1')">
+            👤 Persona 1
+          </button>
+          <button class="dropdown-item" onclick="selectPersona('Persona2')">
+            👤 Persona 2
+          </button>
+        </div>
+      </div>
+
+      <h1 class="chat-title">Chat Automático IA</h1>
+
+      <div class="chat-area">
+        <div class="chat-content">
+          <div class="chat-placeholder">
+            💬 Área de Chat - ¡Listo para comenzar!
+          </div>
+        </div>
+      </div>
+
+      <div class="buttons-container">
+        <button class="chat-button" onclick="iniciarChat()">
+          🚀 Iniciar Chat
+        </button>
+        <button class="chat-button" onclick="reiniciarChat()">
+          🔄 Reiniciar Chat
+        </button>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById("dropdownMenu");
+        const button = document.querySelector(".menu-button");
+
+        menu.classList.toggle("show");
+        button.classList.toggle("active");
+      }
+
+      function selectPersona(persona) {
+        alert(
+          "👤 Has seleccionado: " +
+            persona +
+            "\n\nEsta persona ahora puede usar el chat."
+        );
+        toggleMenu(); // Cierra el menú después de seleccionar
+      }
+
+      // Cerrar menú al hacer clic fuera
+      document.addEventListener("click", function (event) {
+        const menu = document.getElementById("dropdownMenu");
+        const button = document.querySelector(".menu-button");
+
+        if (!menu.contains(event.target) && !button.contains(event.target)) {
+          menu.classList.remove("show");
+          button.classList.remove("active");
+        }
+      });
+
+      function iniciarChat() {
+        // Aquí irá la lógica para iniciar el chat
+        alert(
+          "🚀 ¡Iniciando chat automático!\n\nEl chat se iniciará en breve..."
+        );
+      }
+
+      function reiniciarChat() {
+        // Aquí irá la lógica para reiniciar el chat
+        if (
+          confirm(
+            "🔄 ¿Estás seguro de que quieres reiniciar el chat?\n\nSe perderá el historial actual."
+          )
+        ) {
+          alert(
+            "🔄 Chat reiniciado exitosamente!\n\nPuedes comenzar una nueva conversación."
+          );
+        }
+      }
+
+      function irAEntrada() {
+        // Función para ir a la página de bienvenida
+        window.location.href = "../Bienvenida/Index.html";
+      }
+    </script>
+  </body>
+</html>
