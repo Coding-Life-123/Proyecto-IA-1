@@ -4,16 +4,15 @@ dotenv.config()
 
 const apiKey = process.env.API_KEY;
 
-console.log(apiKey)
-
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({});
+const ai = new GoogleGenAI({apiKey: apiKey});
+
 
 async function main() {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
-    contents: "Explain how AI works in a few words",
+    contents: "Es santiago una persona homosexual de genero binario no fluide ameizing?",
   });
   console.log(response.text);
 }
