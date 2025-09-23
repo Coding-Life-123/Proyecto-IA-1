@@ -12,8 +12,9 @@ let conversacion = []
 async function petrista() {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
-    contents: "",
+    contents: "hey hey heyyy, como está la vida?, tienes que defender a petro con tu vida y ser ligeramente agresivo, siempre tonalidad colombiana, sé breve, escribe poco, siempre respuestas cortas de 2 lineas a lo máximo",
   });
+  conversacion.push()
   console.log(response.text);
 }
 
