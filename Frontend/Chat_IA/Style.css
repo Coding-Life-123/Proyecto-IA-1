@@ -105,9 +105,9 @@ body::after {
 /* Header con botones */
 .chat-header {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
-  right: 2rem;
+  top: 3.5rem;
+  left: -15rem;
+  right: -15rem;
   z-index: 10;
   display: flex;
   justify-content: space-between;
@@ -186,9 +186,10 @@ body::after {
   right: 0;
   background: rgba(20, 20, 30, 0.95);
   border: 2px solid rgba(120, 119, 198, 0.4);
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(120, 119, 198, 0.3);
-  min-width: 150px;
+  border-radius: 9px;
+  box-shadow: 0 10px 42px rgba(0, 0, 0, 0.456),
+    0 0 20px rgba(162, 162, 164, 0.3);
+  min-width: 120px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
@@ -207,17 +208,19 @@ body::after {
   width: 100%;
   padding: 0.8rem 1rem;
   color: #ffffff;
+  background-color: #0c0c0c;
   text-decoration: none;
   border: none;
   background: none;
   cursor: pointer;
   font-size: 0.9rem;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   text-align: left;
 }
 
 .dropdown-item:hover {
-  background: rgba(120, 119, 198, 0.2);
+  background: rgba(156, 156, 157, 0.112);
+  transition: all 0.4s ease;
   color: #ffffff;
 }
 
@@ -239,11 +242,11 @@ body::after {
   text-shadow: 0 0 10px rgba(120, 119, 198, 0.5),
     0 0 20px rgba(120, 119, 198, 0.3), 0 0 30px rgba(120, 119, 198, 0.2);
   background: linear-gradient(45deg, #ffffff, #7877c6, #ff77c6);
-  background-size: 300% 300%;
+  background-size: 800% 800%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: titleGlow 3s ease-in-out infinite alternate;
+  animation: titleGlow 2s ease-in-out infinite alternate;
 }
 
 @keyframes titleGlow {
