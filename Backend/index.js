@@ -7,14 +7,26 @@ const apiKey = process.env.API_KEY;
 import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({apiKey: apiKey});
+let conversacion = []
 
-
-async function main() {
+async function petrista() {
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
-    contents: "Es santiago una persona homosexual de genero binario no fluide ameizing?",
+    contents: "",
   });
   console.log(response.text);
 }
 
-await main();
+async function uribista() {
+  const response = await ai.models.generateContent({
+    model: "gemini-2.5-flash",
+    contents: "",
+  });
+  console.log(response.text);
+}
+
+function turno(){
+    
+}
+
+await petrista();
