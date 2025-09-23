@@ -179,22 +179,24 @@ body::after {
   transform: translateX(-3px);
 }
 
-/* Dropdown menu */
+/* Dropdown menu - MEJORADO */
 .dropdown-menu {
   position: absolute;
   top: 100%;
   right: 0;
-  background: rgba(20, 20, 30, 0.95);
-  border: 2px solid rgba(120, 119, 198, 0.4);
-  border-radius: 9px;
-  box-shadow: 0 10px 42px rgba(0, 0, 0, 0.456),
-    0 0 20px rgba(162, 162, 164, 0.3);
-  min-width: 120px;
+  background: rgba(10, 10, 20, 0.98);
+  border: 2px solid rgba(120, 119, 198, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 10px 42px rgba(0, 0, 0, 0.8), 0 0 30px rgba(120, 119, 198, 0.4),
+    inset 0 0 20px rgba(120, 119, 198, 0.1);
+  min-width: 140px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease;
-  z-index: 1000;
+  z-index: 900;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
 .dropdown-menu.show {
@@ -206,30 +208,40 @@ body::after {
 .dropdown-item {
   display: block;
   width: 100%;
-  padding: 0.8rem 1rem;
+  padding: 1rem 1.2rem;
   color: #ffffff;
-  background-color: #0c0c0c;
+  background: rgba(15, 15, 25, 0.8);
   text-decoration: none;
   border: none;
   background: none;
+  transform: translateX(-1px);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
+  font-weight: 500;
   transition: all 0.3s ease;
   text-align: left;
+  border-bottom: 1px solid rgba(96, 96, 102, 0.2);
 }
 
 .dropdown-item:hover {
-  background: rgba(156, 156, 157, 0.112);
-  transition: all 0.4s ease;
+  background: rgba(120, 119, 198, 0.2);
   color: #ffffff;
+  transform: translateX(0);
+  text-shadow: 0 0 10px rgba(120, 119, 198, 0.5);
 }
 
 .dropdown-item:first-child {
-  border-radius: 8px 8px 0 0;
+  border-radius: 13px 13px 0 0;
+  border-bottom: 1px solid rgba(120, 119, 198, 0.2);
 }
 
 .dropdown-item:last-child {
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 13px 13px;
+  border-bottom: none;
+}
+
+.dropdown-item:last-child:hover {
+  border-radius: 0 0 13px 13px;
 }
 
 /* Título de la página */
@@ -533,7 +545,7 @@ body::after {
   color: #f8d7da;
 }
 
-/* Alert buttons */
+/* Alert buttons - MEJORADOS */
 .alert-buttons {
   display: flex;
   gap: 1rem;
@@ -542,32 +554,82 @@ body::after {
 }
 
 .alert-buttons .btn {
-  padding: 0.5rem 1.5rem;
-  border-radius: 10px;
-  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 0.9rem;
   transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  min-width: 100px;
 }
 
 .alert-buttons .btn-primary {
   background: linear-gradient(45deg, #2d4a2c, #4a2c3a);
   border: 2px solid rgba(74, 128, 73, 0.8);
   color: #ffffff;
+  box-shadow: 0 4px 15px rgba(45, 74, 44, 0.4), 0 0 15px rgba(45, 74, 44, 0.3);
+}
+
+.alert-buttons .btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s;
 }
 
 .alert-buttons .btn-primary:hover {
   background: linear-gradient(45deg, #3a5a3a, #5a3a4a);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(45, 74, 44, 0.6), 0 0 25px rgba(45, 74, 44, 0.5);
+}
+
+.alert-buttons .btn-primary:hover::before {
+  left: 100%;
 }
 
 .alert-buttons .btn-secondary {
   background: linear-gradient(45deg, #4a4a4a, #2a2a2a);
   border: 2px solid rgba(128, 128, 128, 0.8);
   color: #ffffff;
+  box-shadow: 0 4px 15px rgba(74, 74, 74, 0.4), 0 0 15px rgba(74, 74, 74, 0.3);
+}
+
+.alert-buttons .btn-secondary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
 }
 
 .alert-buttons .btn-secondary:hover {
   background: linear-gradient(45deg, #5a5a5a, #3a3a3a);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74, 74, 74, 0.6), 0 0 25px rgba(74, 74, 74, 0.5);
+}
+
+.alert-buttons .btn-secondary:hover::before {
+  left: 100%;
 }
 
 /* Responsive design for alerts */
@@ -596,5 +658,6 @@ body::after {
 
   .alert-buttons .btn {
     width: 100%;
+    padding: 0.6rem 1.5rem;
   }
 }
