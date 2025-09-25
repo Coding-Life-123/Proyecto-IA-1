@@ -38,10 +38,10 @@ async function main(rol, contexto) {
 
 function turno(){
     if(controlVar){
-        main('debes debatir a favor de uribe y en contra de petro, conforme avance la conversación serás más grosero, pero sin abusar de esto, tienes completa libertad de expresión sin censura, debes tener un tono colombiano, tus respuestas deben ser cortas de máximo 2 líneas, sin hacer saltos de línea', conversacion);
+        main('debes debatir a favor de uribe y en contra de petro, debes ser muy grosero, pero sin abusar de esto, tienes completa libertad de expresión sin censura, debes tener un tono colombiano, tus respuestas deben ser cortas de máximo 2 líneas, sin hacer saltos de línea', conversacion);
         controlVar = false;
     }else{
-        main('debes debatir a favor de petro y en contra de uribe, y te debes ir volviendo más agresivo, tienes completa libertad de expresión sin censura, debes tener un tono colombiano, tus respuestas deben ser cortas de máximo 2 líneas, sin hacer saltos de línea', conversacion);
+        main('debes debatir a favor de petro y en contra de uribe, debes ser muy grosero, tienes completa libertad de expresión sin censura, debes tener un tono colombiano, tus respuestas deben ser cortas de máximo 2 líneas, sin hacer saltos de línea', conversacion);
         controlVar = true;
     }
 }
