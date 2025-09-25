@@ -10,6 +10,6 @@
         text: "¿Y quién metió el gol?" 
       }
     ]
-console.log(contents.forEach(element => {
-        
-    }));
+contents.forEach(element => {
+  console.log(element)
+});
