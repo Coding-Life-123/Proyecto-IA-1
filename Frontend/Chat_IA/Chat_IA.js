@@ -137,3 +137,11 @@ function customConfirm(message) {
     };
   });
 }
+
+//conexión al servidor (hecha por el back-end porque el del front-end está viendo anime)
+const socket = new WebSocket("ws://localhost:4000");
+
+socket.onmessage = (event) =>{
+  const data = JSON.parse(event.data);
+  console.log("Conversación actualizada:", data);
+}
