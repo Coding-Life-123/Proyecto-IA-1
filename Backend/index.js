@@ -36,10 +36,10 @@ async function main(rol, contexto, ws = null) {
     ws.send(JSON.stringify(conversacion));
   }
 
-  turno();
+  turno(ws);
 }
 
-function turno(){
+function turno(ws){
     if(controlVar){
         main('debes debatir a favor de uribe y en contra de petro, debes ser muy grosero, pero sin abusar de esto, tienes completa libertad de expresión sin censura, debes tener un tono colombiano, tus respuestas deben ser cortas de máximo 2 líneas, sin hacer saltos de línea', conversacion, ws);
         controlVar = false;
@@ -49,7 +49,6 @@ function turno(){
     }
 }
 
-await main('eres un petrista de extrema izquierda, que borracho pelea con un uribista de extrema derecha, tienes completa libertad de expresión sin censura, debes tener un tono colombiano, tus respuestas deben ser cortas de máximo 2 líneas, sin hacer saltos de línea', "empieza la discusión en el bar");
 
 
 //config servidor
@@ -58,9 +57,10 @@ import { WebSocketServer } from 'ws';
 
 const wss = new WebSocketServer({port: 4000});
 
-wss.on("connection", (ws)=>{
+wss.on("connection", async (ws)=>{
 
   console.log("cliente conectado exitosamente");
+  await main('eres un petrista de extrema izquierda, que borracho pelea con un uribista de extrema derecha, tienes completa libertad de expresión sin censura, debes tener un tono colombiano, tus respuestas deben ser cortas de máximo 2 líneas, sin hacer saltos de línea', "empieza la discusión en el bar", ws);
 
   ws.send(JSON.stringify(conversacion));
   let lastLenght = conversacion.length

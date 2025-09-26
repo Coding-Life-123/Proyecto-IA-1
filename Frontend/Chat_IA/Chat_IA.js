@@ -28,6 +28,8 @@ document.addEventListener("click", function (event) {
   }
 });
 
+const socket = new WebSocket("ws://localhost:4000");
+
 function iniciarChat() {
   // Aquí irá la lógica para iniciar el chat
   showCustomAlert(
@@ -35,6 +37,22 @@ function iniciarChat() {
     "🚀 Chat Iniciado",
     "¡Iniciando chat automático!\n\nEl chat se iniciará en breve..."
   );
+
+  //conexión al servidor (hecha por el back-end porque el del front-end está viendo anime y anuncios de blacked)
+  const listaEjemplo = [
+  "¡A ver, patrón, con esa pinta de 'yo pongo y yo quito'! ¿No le da pena cómo tienen este país vuelto mierda? ¡Paracos hijueputas!"
+  ]
+  const listaEjemplo2 = [
+    "¡A ver, patrón, con esa pinta de 'yo pongo y yo quito'! ¿No le da pena cómo tienen este país vuelto mierda? ¡Paracos hijueputas!",
+    '¡Pena da usted, marica! Con Uribe éramos una berraquera, no este mierdero de vagos que nos trajo su hijueputa de Petro, ¡comunista de mierda!'
+  ]
+
+  //ejemplos de como aparecen los textos, en cada actualización el siguiente mensaje queda último, lo mejor para recorrerlos es un console.log(listaEjemplo2[listaEjemplo2.length-1]), de esta forma siempre muestra el último objeto, lo guarda en una variable y ya lo puede poner en el texto, y llevar una variable booleana de control que al ser false muestre textos de el petrista y al ser true textos del uribista
+
+  socket.onmessage = (event) =>{
+    const data = JSON.parse(event.data);
+    console.log("Conversación actualizada:", data);
+  }
 }
 
 async function reiniciarChat() {
@@ -138,10 +156,4 @@ function customConfirm(message) {
   });
 }
 
-//conexión al servidor (hecha por el back-end porque el del front-end está viendo anime)
-const socket = new WebSocket("ws://localhost:4000");
 
-socket.onmessage = (event) =>{
-  const data = JSON.parse(event.data);
-  console.log("Conversación actualizada:", data);
-}
