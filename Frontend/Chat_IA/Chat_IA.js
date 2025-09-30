@@ -28,7 +28,8 @@ document.addEventListener("click", function (event) {
   }
 });
 
-const socket = new WebSocket("ws://localhost:4000");
+
+const socket = new WebSocket("https://2ngrw7kq-4000.use2.devtunnels.ms/");
 
 function iniciarChat() {
   // Aquí irá la lógica para iniciar el chat
@@ -52,21 +53,38 @@ function iniciarChat() {
   socket.onmessage = (event) =>{
     const data = JSON.parse(event.data);
     console.log("Conversación actualizada:", data);
+
+    const chatArea = document.getElementById("chatContent");
+    let i = data.length - 1
+
+    console.log(i);
+    console.log(i % 2);
+    
+    if(i % 2 === 0){
+        chatArea.innerHTML+=`
+        <div class="petro">
+          <h1>pro-petro</h1>
+          <p>${data[i]}</p>
+        </div>
+      `
+    }else{
+      chatArea.innerHTML+=`
+        <div class="uribe">
+          <h1>pro-uribe</h1>
+          <p>${data[i]}</p>
+        </div>
+      `
+    }
+    chatArea.scrollTop = chatArea.scrollHeight;
   }
+
+  
 }
 
+let last = true;
 async function reiniciarChat() {
   // Aquí irá la lógica para reiniciar el chat
-  const confirmed = await customConfirm(
-    "¿Estás seguro de que quieres reiniciar el chat?\n\nSe perderá el historial actual."
-  );
-  if (confirmed) {
-    showCustomAlert(
-      "success",
-      "🔄 Chat Reiniciado",
-      "Chat reiniciado exitosamente!\n\nPuedes comenzar una nueva conversación."
-    );
-  }
+  window.location.reload()
 }
 
 function irAEntrada() {
